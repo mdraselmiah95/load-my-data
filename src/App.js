@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [users, setUsers] = useState([]);
   const nameRef = useRef();
+  const emailRef = useRef();
 
   useEffect(() => {
     fetch("http://localhost:5000/users")
@@ -41,7 +42,7 @@ function App() {
           id=""
           placeholder="your Name"
         />
-        <input type="email"  name="email" id=""  placeholder="Your Email"/>
+        <input type="email" ref={emailRef} name="email" id=""  placeholder="Your Email"/>
         <input type="submit" value="Submit" />
       </form>
       {users.map((user) => (
