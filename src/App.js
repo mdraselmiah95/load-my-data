@@ -13,7 +13,6 @@ function App() {
   }, []);
 
   const handleAddUser = (e) => {
-    e.preventDefault();
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const newUser = { name: name, email: email };
@@ -29,7 +28,11 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        const addUser = data;
+        const newUsers = [...users, addUser];
+        setUsers(newUsers);
       });
+    e.preventDefault();
   };
 
   return (
@@ -56,6 +59,7 @@ function App() {
       {users.map((user) => (
         <div key={user.id}>
           <h3> Name: {user.name} </h3>
+          <h4>Email: {user.email}</h4>
           <h4>{user.born}</h4>
         </div>
       ))}
