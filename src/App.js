@@ -32,6 +32,8 @@ function App() {
         const newUsers = [...users, addUser];
         setUsers(newUsers);
       });
+    nameRef.current.value = "";
+    emailRef.current.value = "";
     e.preventDefault();
   };
 
