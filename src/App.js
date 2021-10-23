@@ -9,6 +9,11 @@ function App() {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+
+  const handleAddUser = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="App">
       <h2>Found Users: {users.length}</h2>
