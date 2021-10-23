@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const nameRef = useRef();
 
   useEffect(() => {
     fetch("http://localhost:5000/users")
@@ -19,7 +20,13 @@ function App() {
       <h2>Found Users: {users.length}</h2>
 
       <form onSubmit={handleAddUser}>
-        <input type="text" name="name" id="" placeholder="your Name" />
+        <input
+          type="text"
+          ref={nameRef}
+          name="name"
+          id=""
+          placeholder="your Name"
+        />
         <input type="submit" value="Submit" />
       </form>
       {users.map((user) => (
