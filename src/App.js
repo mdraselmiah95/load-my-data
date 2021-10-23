@@ -13,6 +13,7 @@ function App() {
 
   const handleAddUser = (e) => {
     e.preventDefault();
+    console.log(nameRef.current.value);
   };
 
   return (
