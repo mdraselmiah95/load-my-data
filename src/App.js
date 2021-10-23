@@ -15,7 +15,8 @@ function App() {
   const handleAddUser = (e) => {
     e.preventDefault();
     const name = nameRef.current.value;
-    const 
+    const email = emailRef.current.value;
+    const newUser = { name: name, email: email };
     //send data to the server
 
     fetch("http://localhost:5000/users", {
@@ -23,11 +24,8 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: {
-        
-      }
+      body: JSON.stringify(newUser),
     });
-
   };
 
   return (
@@ -42,7 +40,13 @@ function App() {
           id=""
           placeholder="your Name"
         />
-        <input type="email" ref={emailRef} name="email" id=""  placeholder="Your Email"/>
+        <input
+          type="email"
+          ref={emailRef}
+          name="email"
+          id=""
+          placeholder="Your Email"
+        />
         <input type="submit" value="Submit" />
       </form>
       {users.map((user) => (
